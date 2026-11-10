@@ -1,0 +1,633 @@
+/*
+ * Author       : sarvesh.s.2024.cse_rajala
+ * Generated on : 31-Jul-2026 15:31:29
+ * Version      : 1.0
+ */
+ application "Student Admission Enquiry Management"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+
+ 	forms
+	{
+		form Admission_Enquiry_Form
+		{
+			success message = "Data Added Successfully!"
+			feature property = 320
+			Personal_Details
+			(
+				type = section
+				displayname = "Personal Details"
+				visibility = true
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Student_Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Date_Of_Birth
+			(
+    			type = date
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Gender
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"Male","Female","Others"}
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Contact_Details
+			(
+				type = section
+				displayname = "Contact Details"
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			must have Email_Address
+			(
+    			type = email
+				initial value = "divya.ramesh@example.com"
+				maxchar = 80
+	 			row = 2
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Residential_Address1
+			(
+    			type = phonenumber
+				displayname = "Contact_Number"
+    			allowedcountries={in}
+    			defaultcountry="in"
+	 			row = 2
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Residential_Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+	     			 visibility = false
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 2
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Guardian_Academic_Details
+			(
+				type = section
+				displayname = "Guardian & Academic Details"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Guardian_Name
+			(
+    			type = text
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Class_XII_Percentage
+			(
+				type = number
+				initial value = 0
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			must have Preferred_Course
+			(
+				type = picklist
+				maxchar = 100
+				values = {"B.E. Computer Science Engineering","B.Tech - AI & Data Science","B.E. Information Technology"}
+				sortorder = ascending
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Areas_Of_Interest
+			(
+				type = list	
+				values = {"Technical Clubs","Robotics","Artificial Intelligence"}
+				sortorder = ascending
+				height = 60px
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Scheduling_Consent
+			(
+				type = section
+				displayname = "Scheduling & Consent"
+				visibility = true
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			Preferred_Counselling_Time
+			(
+    			type = time
+				timedisplayoptions = "hh:mm" 
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Additional_Remarks
+			(
+    			type = textarea
+				height = 100px
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			must have Terms_Agreement
+			(
+				type = checkboxes	
+				values = {"I agree to the Terms & Privacy Policy"}
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Section
+			(
+				type = section
+	 			row = 5
+	 			column = 0   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list Admission_Enquiry_Form_Report
+		{
+			displayName = "Admission_Enquiry_Form Report"
+			show all rows from Admission_Enquiry_Form    
+			(
+				Student_Name 
+				Email_Address
+				Residential_Address 
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Residential_Address1 as "Contact_Number"
+				(
+					displayformat = plainnumber 
+				)
+				Guardian_Name
+				Additional_Remarks
+				Class_XII_Percentage
+				Date_Of_Birth
+				Preferred_Counselling_Time
+				Preferred_Course
+				Gender
+				Areas_Of_Interest
+				Terms_Agreement
+			)
+		}
+	}
+
+
+
+
+		workflow
+		{
+		form
+		{
+			confirmation_mail as "confirmation mail"
+			{
+				type =  form
+				form = Admission_Enquiry_Form
+
+				record event = on add
+
+				on validate
+				{
+				}
+
+			}
+			Send_Email_Form_Propertie as "Send Email - Form Properties"
+			{
+				type =  presuccess
+				form = Admission_Enquiry_Form
+				on start
+				{
+					actions 
+					{
+						sendmail
+						(
+							from : "zoho.adminuserid"
+							to : Email_Address
+							subject : "Student Admission Enquiry Management : New entry added"
+							message : "<div>Hello ${Student_Name.first_name},<br><br>You have <b>Successfully submitted</b> the Student Admission Enquiry Form, Stay tuned for further updates!<br></div>"
+							attachments : template : _default1 as inline
+						)
+					}
+				}
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form Admission_Enquiry_Form
+			{
+				label placement = labelinplace
+			}
+		}
+		reports
+		{
+			report Admission_Enquiry_Form_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Student_Name
+								Email_Address
+								Residential_Address
+								Residential_Address1 as "Contact_Number"
+								Guardian_Name
+								Additional_Remarks
+								Class_XII_Percentage
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Student_Name
+								Email_Address
+								Residential_Address
+								Residential_Address1 as "Contact_Number"
+								Guardian_Name
+								Additional_Remarks
+								Class_XII_Percentage
+								Date_Of_Birth
+								Preferred_Counselling_Time
+								Preferred_Course
+								Gender
+								Areas_Of_Interest
+								Terms_Agreement
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Admission_Enquiry_Form
+				{
+					displayname = "Admission_Enquiry_Form"
+					icon = "tech-desktop"
+					form  Admission_Enquiry_Form
+					{
+						icon = "tech-desktop"
+					}
+					report Admission_Enquiry_Form_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			font = "lato"
+			color options
+			{
+				name = "custom_color_1"
+				brand color = "#a811cc"
+				navigation background color = "#12132b"
+				type = "custom"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Admission_Enquiry_Form
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = twocolumn
+			font = "default"
+			style = "1"
+			color options
+			{
+				type = "custom"
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Admission_Enquiry_Form
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "1"
+			color options
+			{
+				type = "custom"
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

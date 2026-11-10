@@ -1,0 +1,4014 @@
+/*
+ * Author       : sarvesh.s.2024.cse_rajala
+ * Generated on : 31-Jul-2026 15:35:16
+ * Version      : 1.0
+ */
+ application "Student Information Management"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "America/Los_Angeles"
+ 	time format = "24-hr"
+
+ 	forms
+	{
+		form academic_calendar
+		{
+			displayname = "Academic Calendar"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			academic_year
+			(
+    			type = text
+				displayname = "Academic Year"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			start_date
+			(
+    			type = date
+				displayname = "Start Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			end_date
+			(
+    			type = date
+				displayname = "End Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			semester
+			(
+				type = picklist
+				displayname = "Semester"
+				values = {"Second","Sixth","Third","First","Fourth","Fifth","Seventh","Eighth"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			break_start
+			(
+    			type = date
+				displayname = "Break Start"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			break_end
+			(
+    			type = date
+				displayname = "Break End"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			exam_period
+			(
+    			type = text
+				displayname = "Exam Period"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form academic_progress
+		{
+			displayname = "Academic Progress"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			student
+			(
+				type = list	
+				displayname = "Student"
+				values  = student_profile.ID
+    			displayformat = [student_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			course
+			(
+				type = list	
+				displayname = "Course"
+				values  = course_catalog.ID
+    			displayformat = [course_code]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			semester
+			(
+				type = picklist
+				displayname = "Semester"
+				values = {"Second","Sixth","Third","First","Fourth","Fifth","Seventh","Eighth"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			grade
+			(
+				type = picklist
+				displayname = "Grade"
+				values = {"A","B","C","D","F","D+","C+","B+","D-","A+","C-","B-","A-"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			credits_earned
+			(
+				type = number
+				displayname = "Credits Earned"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			gpa
+			(
+				type = decimal
+				displayname = "GPA"
+				maxchar = 16
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			assessment_date
+			(
+    			type = date
+				displayname = "Assessment Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			feedback
+			(
+    			type = textarea
+				displayname = "Feedback"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form attendance_record
+		{
+			displayname = "Attendance Record"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			student
+			(
+				type = list	
+				displayname = "Student"
+				values  = student_profile.ID
+    			displayformat = [student_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			course
+			(
+				type = list	
+				displayname = "Course"
+				values  = course_catalog.ID
+    			displayformat = [course_code]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			date_1
+			(
+    			type = date
+				displayname = "Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = picklist
+				displayname = "Status"
+				values = {"Late","Present","Absent"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			period
+			(
+    			type = text
+				displayname = "Period"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			instructor
+			(
+    			type = text
+				displayname = "Instructor"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			notes
+			(
+    			type = textarea
+				displayname = "Notes"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form course_catalog
+		{
+			displayname = "Course Catalog"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			course_code
+			(
+    			type = text
+				displayname = "Course Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			course_name
+			(
+    			type = text
+				displayname = "Course Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			credit_hours
+			(
+				type = number
+				displayname = "Credit Hours"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			prerequisites
+			(
+    			type = textarea
+				displayname = "Prerequisites"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			instructor
+			(
+    			type = text
+				displayname = "Instructor"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			department
+			(
+				type = picklist
+				displayname = "Department"
+				values = {"Biotechnology","Chemistry","Computer Science","Mathematics","Mechanical Engineering","Chemical Engineering","Physics","Electrical Engineering"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			description
+			(
+    			type = textarea
+				displayname = "Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			max_capacity
+			(
+				type = number
+				displayname = "Max Capacity"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form course_registration
+		{
+			displayname = "Course Registration"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			student
+			(
+				type = list	
+				displayname = "Student"
+				values  = student_profile.ID
+    			displayformat = [student_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			course
+			(
+				type = list	
+				displayname = "Course"
+				values  = course_catalog.ID
+    			displayformat = [course_code]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			registration_date
+			(
+    			type = date
+				displayname = "Registration Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = picklist
+				displayname = "Status"
+				values = {"Dropped","Waitlisted","Completed","Registered"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			semester
+			(
+				type = picklist
+				displayname = "Semester"
+				values = {"Second","Sixth","Third","First","Fourth","Fifth","Seventh","Eighth"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			enrollment_date
+			(
+    			type = date
+				displayname = "Enrollment Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			priority
+			(
+				type = number
+				displayname = "Priority"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Registration Created","Registration Validated","Registration Rejected","Course Availability Checked","Registration Confirmed","Payment Processed","Registration On Hold","Enrollment Finalized","Payment Failed","Course Started","Course Completed","Course Dropped","Course In Progress","Course On Hold","Grade Submitted","Enrollment Closed","Grade Rejected"}
+			}
+		}
+		form enrollment_tracking
+		{
+			displayname = "Enrollment Tracking"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			student
+			(
+				type = list	
+				displayname = "Student"
+				values  = student_profile.ID
+    			displayformat = [student_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			academic_year
+			(
+    			type = text
+				displayname = "Academic Year"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			semester
+			(
+				type = picklist
+				displayname = "Semester"
+				values = {"Second","Sixth","Third","First","Fourth","Fifth","Seventh","Eighth"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			status
+			(
+				type = picklist
+				displayname = "Status"
+				values = {"Enrolled","On Hold","Completed","Withdrawn"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			enrollment_date
+			(
+    			type = date
+				displayname = "Enrollment Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			registration_count
+			(
+				type = number
+				displayname = "Registration Count"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			last_updated
+			(
+    			type = datetime
+				displayname = "Last Updated"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			notes
+			(
+    			type = textarea
+				displayname = "Notes"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Enrollment Created","Enrollment Verified","Enrollment Pending Review","Enrollment Cancelled","Enrollment Confirmed","Enrollment Rejected","Enrollment In Progress","Enrollment On Hold","Enrollment Completed","Enrollment Closed","Enrollment Reopened"}
+			}
+		}
+		form student_profile
+		{
+			displayname = "Student Profile"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			student_id
+			(
+    			type = autonumber
+				displayname = "Student Id"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			name
+			(
+    			type = name
+				displayname = "Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			date_of_birth
+			(
+    			type = date
+				displayname = "Date Of Birth"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			gender
+			(
+				type = picklist
+				displayname = "Gender"
+				values = {"Male","Female","Other"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			admission_date
+			(
+    			type = date
+				displayname = "Admission Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			enrollment_status
+			(
+				type = picklist
+				displayname = "Enrollment Status"
+				values = {"Active","Inactive","Graduated","Withdrawn"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contact_number
+			(
+    			type = phonenumber
+				displayname = "Contact Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			email
+			(
+    			type = email
+				displayname = "Email"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			address
+			(
+    			type = address
+				displayname = "Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+	     			 visibility = false
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+	     			 visibility = false
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+	     			 visibility = false
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+	     			 visibility = false
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+	     			 visibility = false
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "Latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "Longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			emergency_contact
+			(
+    			type = name
+				displayname = "Emergency Contact"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		list course_registration_Report
+		{
+			displayName = "Course Registration Report"
+			show all rows from course_registration    
+			(
+				student as "Student"
+				course as "Course"
+				registration_date as "Registration Date"
+				status as "Status"
+				semester as "Semester"
+				enrollment_date as "Enrollment Date"
+				priority as "Priority"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (status == "Completed")
+				fields = [status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (status == "Dropped")
+				fields = [status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (status == "Registered")
+				fields = [status]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+				"New Formatting4"
+				{
+				condition = (status == "Waitlisted")
+				fields = [status]
+				format = "color:#ffffff;background-color:#3598db;"
+				}
+			)
+		}
+		kanban course_registration_by_semester
+		{
+			displayName = "Board"
+			show all rows from course_registration    
+			(
+				student as "Student"
+				course as "Course"
+				registration_date as "Registration Date"
+				status as "Status"
+				semester as "Semester"
+				enrollment_date as "Enrollment Date"
+				priority as "Priority"
+			)
+			options
+			(
+	 			display field = semester
+	 		)
+		}
+		list attendance_record_Report
+		{
+			displayName = "Attendance Record Report"
+			show all rows from attendance_record    
+			(
+				student as "Student"
+				course as "Course"
+				date_1 as "Date"
+				status as "Status"
+				period as "Period"
+				instructor as "Instructor"
+				notes as "Notes"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (status == "Absent")
+				fields = [status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (status == "Late")
+				fields = [status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		kanban attendance_record_by_status
+		{
+			displayName = "Board"
+			show all rows from attendance_record    
+			(
+				student as "Student"
+				course as "Course"
+				date_1 as "Date"
+				status as "Status"
+				period as "Period"
+				instructor as "Instructor"
+				notes as "Notes"
+			)
+			options
+			(
+	 			display field = status
+	 		)
+		}
+		list academic_progress_Report
+		{
+			displayName = "Academic Progress Report"
+			show all rows from academic_progress    
+			(
+				student as "Student"
+				course as "Course"
+				semester as "Semester"
+				grade as "Grade"
+				credits_earned as "Credits Earned"
+				gpa as "GPA"
+				assessment_date as "Assessment Date"
+				feedback as "Feedback"
+			)
+		}
+		kanban academic_progress_by_semester
+		{
+			displayName = "Board"
+			show all rows from academic_progress    
+			(
+				student as "Student"
+				course as "Course"
+				semester as "Semester"
+				grade as "Grade"
+				credits_earned as "Credits Earned"
+				gpa as "GPA"
+				assessment_date as "Assessment Date"
+				feedback as "Feedback"
+			)
+			options
+			(
+	 			display field = semester
+	 		)
+		}
+		list academic_calendar_Report
+		{
+			displayName = "Academic Calendar Report"
+			show all rows from academic_calendar    
+			(
+				academic_year as "Academic Year"
+				start_date as "Start Date"
+				end_date as "End Date"
+				semester as "Semester"
+				break_start as "Break Start"
+				break_end as "Break End"
+				exam_period as "Exam Period"
+			)
+		}
+		kanban academic_calendar_by_semester
+		{
+			displayName = "Board"
+			show all rows from academic_calendar    
+			(
+				academic_year as "Academic Year"
+				start_date as "Start Date"
+				end_date as "End Date"
+				semester as "Semester"
+				break_start as "Break Start"
+				break_end as "Break End"
+				exam_period as "Exam Period"
+			)
+			options
+			(
+	 			display field = semester
+	 		)
+		}
+		list student_profile_Report
+		{
+			displayName = "Student Profile Report"
+			show all rows from student_profile    
+			(
+				student_id as "Student Id"
+				name  as "Name"
+				date_of_birth as "Date Of Birth"
+				gender as "Gender"
+				admission_date as "Admission Date"
+				enrollment_status as "Enrollment Status"
+				contact_number as "Contact Number"
+				email as "Email"
+				address  as "Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				emergency_contact  as "Emergency Contact"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (enrollment_status == "Active")
+				fields = [enrollment_status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (enrollment_status == "Inactive")
+				fields = [enrollment_status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (enrollment_status == "Withdrawn")
+				fields = [enrollment_status]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban student_profile_by_enrollment_status
+		{
+			displayName = "Board"
+			show all rows from student_profile    
+			(
+				student_id as "Student Id"
+				name  as "Name"
+				date_of_birth as "Date Of Birth"
+				gender as "Gender"
+				admission_date as "Admission Date"
+				enrollment_status as "Enrollment Status"
+				contact_number as "Contact Number"
+				email as "Email"
+				address  as "Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				emergency_contact  as "Emergency Contact"
+			)
+			options
+			(
+	 			display field = enrollment_status
+	 		)
+		}
+		list course_catalog_Report
+		{
+			displayName = "Course Catalog Report"
+			show all rows from course_catalog    
+			(
+				course_code as "Course Code"
+				course_name as "Course Name"
+				credit_hours as "Credit Hours"
+				prerequisites as "Prerequisites"
+				instructor as "Instructor"
+				department as "Department"
+				description as "Description"
+				max_capacity as "Max Capacity"
+			)
+		}
+		kanban course_catalog_by_department
+		{
+			displayName = "Board"
+			show all rows from course_catalog    
+			(
+				course_code as "Course Code"
+				course_name as "Course Name"
+				credit_hours as "Credit Hours"
+				prerequisites as "Prerequisites"
+				instructor as "Instructor"
+				department as "Department"
+				description as "Description"
+				max_capacity as "Max Capacity"
+			)
+			options
+			(
+	 			display field = department
+	 		)
+		}
+		list enrollment_tracking_Report
+		{
+			displayName = "Enrollment Tracking Report"
+			show all rows from enrollment_tracking    
+			(
+				student as "Student"
+				academic_year as "Academic Year"
+				semester as "Semester"
+				status as "Status"
+				enrollment_date as "Enrollment Date"
+				registration_count as "Registration Count"
+				last_updated as "Last Updated"
+				notes as "Notes"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (status == "Completed")
+				fields = [status]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (status == "Enrolled")
+				fields = [status]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (status == "Withdrawn")
+				fields = [status]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban enrollment_tracking_by_semester
+		{
+			displayName = "Board"
+			show all rows from enrollment_tracking    
+			(
+				student as "Student"
+				academic_year as "Academic Year"
+				semester as "Semester"
+				status as "Status"
+				enrollment_date as "Enrollment Date"
+				registration_count as "Registration Count"
+				last_updated as "Last Updated"
+				notes as "Notes"
+			)
+			options
+			(
+	 			display field = semester
+	 		)
+		}
+	}
+	pages
+	{
+		page DashBoard
+		{
+			displayname = "Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#F97164'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '64%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginTop = '8px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.academic_progress.gpa.avg'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '8px' \n\tmarginTop = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Average of GPA'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '36%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#C75A50'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'weather-drops'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#EEA131'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.course_registration.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Count of Course Registration'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#BE8127'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'business-laptop-71'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#00CFA9'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.attendance_record.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Count of Attendance Record'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0BA385'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'users-2-voice-record'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='26%'\n   \t>\n\t<panel elementName='Panel 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#3E99DE'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '20px'\n\tpaddingLeft = '20px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '65%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.academic_progress.ID.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tcolor = '#FFFFFF'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Count of Academic Progress'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '35%'\n\t\thAlign = 'right'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '10px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0E78C9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'loader-refresh'\n\tsize = '22px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Grouped_Panel 1'\n \n\t\n\ttitle = 'Status'\n\t\n\t\ttitleSize = '15px'\n            boldTitle = 'true'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '0px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#F97164'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'nature-flower-07'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tcolor = '#C75A50'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'status == &quot;Dropped&quot;'\n\t  value = 'thisapp.course_registration.status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Dropped'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#EEA131'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-grid-50'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#BE8127'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'status == &quot;Waitlisted&quot;'\n\t  value = 'thisapp.course_registration.status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Waitlisted'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#00CFA9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'design-todo'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#0BA385'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'status == &quot;Completed&quot;'\n\t  value = 'thisapp.course_registration.status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Completed'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc><pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '25%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#3E99DE'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'business-percentage-38'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\tpaddingLeft = '10px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tcolor = '#0E78C9'\n\tsize = '28px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t\tcriteria = 'status == &quot;Registered&quot;'\n\t  value = 'thisapp.course_registration.status.count'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '10px'\n\tmarginRight = '0px' \n\tmarginTop = '0px'\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Registered'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel_Button 1'\n \n\t\n\ttitle = 'Quick Links'\n\t\n\t\ttitleSize = '15px'\n            boldTitle = 'true'\n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'course_registration'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#595959'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Course Registration'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='27%'\n   \t>\n\t<panel elementName='Panel_Button 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'attendance_record'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Attendance Record'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel_Button 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'academic_progress'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Academic Progress'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel_Button 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#CB6711'\n\n\t\twidth = '2%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t\n</pc>\n</pr>\n</pc><pc \n\t\tpaddingTop = '10px'\n\tpaddingLeft = '0px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '10px'\n\tbgColor = '#FFFFFF'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'academic_calendar'\n\t\ttarget = 'new-window'\n\t\twidth = '98%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginLeft = '0px'\n\tmarginRight = '6px' \n\n\tcolor = '#3F3F3F'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'ui-2-square-add-08'\n\tsize = '14px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tcolor = '#3F3F3F'\n\tsize = '14px'\n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Add New Academic Calendar'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 1'\n\n\t\n\ttitle = 'Credits Earned by GPA'\n\t\n\t\ttitleSize = '16px'\n\ttype = 'Scatter'\n\txtitle = 'Credits Earned'\n\tytitle = 'GPA'\n\tbgColor = 'rgb(255, 255, 255)'\n\ttheme = '#f37d16'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'academic_progress'\n\txfield = 'credits_earned'\n\tyfields = 'value:gpa'\n\tgroupBy = 'student'\n\t\tDelugeCriteria = 'credits_earned is not null'\n/>\n\n</column><column\n   \t\t width='50%'\n   \t>\n\t<chart \n\telementName='Chart 2'\n\n\t\n\ttitle = 'Semester by GPA'\n\t\n\t\ttitleSize = '16px'\n\ttype = 'Bar'\n\txtitle = 'Semester'\n\tytitle = 'GPA'\n\tbgColor = 'rgb(255, 255, 255)'\n\ttheme = 'theme1'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'academic_progress'\n\txfield = 'semester'\n\tyfields = 'sum:gpa'\n\tgroupBy = 'student'\n\t\tDelugeCriteria = 'semester is not null &amp;&amp; semester != &quot;&quot;'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'course_registration_Report'\n\t\n\t\tiszreport = 'false'\n\t\t\t\t\tzc_AddRec = 'false'\n\t\t\t\t\tzc_EditRec = 'false'\n\t\t\t\t\tzc_Print = 'false'\n\t\t\t\t\tzc_Export = 'false'\n\t\t\t\t\tzc_DelRec = 'false'\n\t\t\t\t\tzc_DuplRec = 'false'\n\t\t\t\t\tzc_Search = 'false'\n\t\t\t\t\tzc_EditBulkRec = 'false'\n\t\t\t\t\tzc_BulkDelete = 'false'\n\t\t\t\t\tzc_BulkDuplicate = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n\n/>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+
+
+
+
+		workflow
+		{
+
+
+
+
+		blueprint
+		{
+    			course_registration_process as "Course Registration Process"
+    			{
+        			type = Blueprint
+        			form = course_registration
+        			start
+        			{
+            			start stage = "Registration Created"
+        			}
+        			stages
+        			{
+           			"Registration Created"
+           			{
+           			}
+           			"Registration Validated"
+           			{
+           			}
+           			"Registration Rejected"
+           			{
+           			}
+           			"Course Availability Checked"
+           			{
+           			}
+           			"Registration Confirmed"
+           			{
+           			}
+           			"Payment Processed"
+           			{
+           			}
+           			"Registration On Hold"
+           			{
+           			}
+           			"Enrollment Finalized"
+           			{
+           			}
+           			"Payment Failed"
+           			{
+           			}
+           			"Course Started"
+           			{
+           			}
+           			"Course Completed"
+           			{
+           			}
+           			"Course Dropped"
+           			{
+           			}
+           			"Course In Progress"
+           			{
+           			}
+           			"Course On Hold"
+           			{
+           			}
+           			"Grade Submitted"
+           			{
+           			}
+           			"Enrollment Closed"
+           			{
+           			}
+           			"Grade Rejected"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				cancel_completion as "Cancel Completion Due to Incomplete Requirements"
+    				{
+         				type = normal
+         				from stage = "Course Completed"
+         				to stage = "Registration Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				cancel_finalized as "Cancel Finalized Enrollment"
+    				{
+         				type = normal
+         				from stage = "Enrollment Finalized"
+         				to stage = "Registration Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				cancel_payment_failure as "Cancel Registration Due to Payment Failure"
+    				{
+         				type = normal
+         				from stage = "Payment Failed"
+         				to stage = "Registration Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				check_course_availability as "Check Course Availability"
+    				{
+         				type = normal
+         				from stage = "Registration Validated"
+         				to stage = "Course Availability Checked"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				close_enrollment as "Close Enrollment Record"
+    				{
+         				type = normal
+         				from stage = "Grade Submitted"
+         				to stage = "Enrollment Closed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_course as "Mark Course as Completed"
+    				{
+         				type = normal
+         				from stage = "Course Started"
+         				to stage = "Course Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				confirm_enrollment as "Confirm Course Enrollment"
+    				{
+         				type = normal
+         				from stage = "Course Availability Checked"
+         				to stage = "Registration Confirmed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				continue_course as "Continue Course Progress"
+    				{
+         				type = normal
+         				from stage = "Course Started"
+         				to stage = "Course In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				drop_course as "Record Student Course Drop"
+    				{
+         				type = normal
+         				from stage = "Course Started"
+         				to stage = "Course Dropped"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				drop_from_hold as "Drop Course from Hold"
+    				{
+         				type = normal
+         				from stage = "Course On Hold"
+         				to stage = "Course Dropped"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				finalize_drop as "Finalize Course Drop and Cancel Enrollment"
+    				{
+         				type = normal
+         				from stage = "Course Dropped"
+         				to stage = "Registration Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				finalize_enrollment as "Finalize Enrollment"
+    				{
+         				type = normal
+         				from stage = "Payment Processed"
+         				to stage = "Enrollment Finalized"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				handle_payment_failure as "Handle Payment Failure"
+    				{
+         				type = normal
+         				from stage = "Payment Processed"
+         				to stage = "Payment Failed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				hold_after_drop as "Hold Enrollment Pending Review"
+    				{
+         				type = normal
+         				from stage = "Course Dropped"
+         				to stage = "Registration On Hold"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				hold_course as "Pause Course Progress"
+    				{
+         				type = normal
+         				from stage = "Course In Progress"
+         				to stage = "Course On Hold"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				hold_enrollment as "Place Enrollment on Hold"
+    				{
+         				type = normal
+         				from stage = "Enrollment Finalized"
+         				to stage = "Registration On Hold"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				hold_registration as "Place Registration on Hold"
+    				{
+         				type = normal
+         				from stage = "Registration Confirmed"
+         				to stage = "Registration On Hold"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				process_payment as "Process Enrollment Payment"
+    				{
+         				type = normal
+         				from stage = "Registration Confirmed"
+         				to stage = "Payment Processed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_grade_dispute as "Cancel Enrollment Due to Grade Dispute"
+    				{
+         				type = normal
+         				from stage = "Grade Rejected"
+         				to stage = "Registration Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_on_hold as "Cancel Registration on Hold"
+    				{
+         				type = normal
+         				from stage = "Registration On Hold"
+         				to stage = "Registration Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_registration as "Reject Registration"
+    				{
+         				type = normal
+         				from stage = "Registration Created"
+         				to stage = "Registration Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_unavailable as "Reject Registration Due to Unavailability"
+    				{
+         				type = normal
+         				from stage = "Course Availability Checked"
+         				to stage = "Registration Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reopen_grades as "Reopen for Grade Review"
+    				{
+         				type = normal
+         				from stage = "Grade Submitted"
+         				to stage = "Grade Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resubmit_grades as "Resubmit Corrected Grades"
+    				{
+         				type = normal
+         				from stage = "Grade Rejected"
+         				to stage = "Grade Submitted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_course as "Resume Course Progress"
+    				{
+         				type = normal
+         				from stage = "Course On Hold"
+         				to stage = "Course In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_registration as "Resume Registration"
+    				{
+         				type = normal
+         				from stage = "Registration On Hold"
+         				to stage = "Registration Confirmed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				retry_payment as "Retry Payment"
+    				{
+         				type = normal
+         				from stage = "Payment Failed"
+         				to stage = "Payment Processed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				start_course as "Mark Course as Started"
+    				{
+         				type = normal
+         				from stage = "Enrollment Finalized"
+         				to stage = "Course Started"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				submit_grades as "Submit Final Grades"
+    				{
+         				type = normal
+         				from stage = "Course Completed"
+         				to stage = "Grade Submitted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				validate_registration as "Validate Registration Details"
+    				{
+         				type = normal
+         				from stage = "Registration Created"
+         				to stage = "Registration Validated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+    			enrollment_tracking_process as "Enrollment Tracking Process"
+    			{
+        			type = Blueprint
+        			form = enrollment_tracking
+        			start
+        			{
+            			start stage = "Enrollment Created"
+        			}
+        			stages
+        			{
+           			"Enrollment Created"
+           			{
+           			}
+           			"Enrollment Verified"
+           			{
+           			}
+           			"Enrollment Pending Review"
+           			{
+           			}
+           			"Enrollment Cancelled"
+           			{
+           			}
+           			"Enrollment Confirmed"
+           			{
+           			}
+           			"Enrollment Rejected"
+           			{
+           			}
+           			"Enrollment In Progress"
+           			{
+           			}
+           			"Enrollment On Hold"
+           			{
+           			}
+           			"Enrollment Completed"
+           			{
+           			}
+           			"Enrollment Closed"
+           			{
+           			}
+           			"Enrollment Reopened"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				appeal_rejection as "Reopen Enrollment for Appeal"
+    				{
+         				type = normal
+         				from stage = "Enrollment Rejected"
+         				to stage = "Enrollment Reopened"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				approve_enrollment as "Approve Enrollment"
+    				{
+         				type = normal
+         				from stage = "Enrollment Pending Review"
+         				to stage = "Enrollment Confirmed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				cancel_enrollment as "Cancel Enrollment"
+    				{
+         				type = normal
+         				from stage = "Enrollment Created"
+         				to stage = "Enrollment Cancelled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				cancel_reopened as "Cancel Reopened Enrollment"
+    				{
+         				type = normal
+         				from stage = "Enrollment Reopened"
+         				to stage = "Enrollment Cancelled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				close_enrollment as "Close Enrollment Record"
+    				{
+         				type = normal
+         				from stage = "Enrollment Completed"
+         				to stage = "Enrollment Closed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_enrollment as "Complete Enrollment"
+    				{
+         				type = normal
+         				from stage = "Enrollment In Progress"
+         				to stage = "Enrollment Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_with_hold as "Complete Enrollment Despite Hold"
+    				{
+         				type = normal
+         				from stage = "Enrollment On Hold"
+         				to stage = "Enrollment Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				confirm_enrollment as "Confirm Enrollment"
+    				{
+         				type = normal
+         				from stage = "Enrollment Verified"
+         				to stage = "Enrollment Confirmed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				hold_enrollment as "Place Enrollment On Hold"
+    				{
+         				type = normal
+         				from stage = "Enrollment Confirmed"
+         				to stage = "Enrollment On Hold"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				pause_enrollment as "Pause Enrollment"
+    				{
+         				type = normal
+         				from stage = "Enrollment In Progress"
+         				to stage = "Enrollment On Hold"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reconfirm_enrollment as "Re-Confirm Enrollment"
+    				{
+         				type = normal
+         				from stage = "Enrollment Reopened"
+         				to stage = "Enrollment Confirmed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_enrollment as "Reject Enrollment"
+    				{
+         				type = normal
+         				from stage = "Enrollment Pending Review"
+         				to stage = "Enrollment Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reopen_enrollment as "Reopen Enrollment for Review"
+    				{
+         				type = normal
+         				from stage = "Enrollment Completed"
+         				to stage = "Enrollment Reopened"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				request_docs as "Request Additional Documentation"
+    				{
+         				type = normal
+         				from stage = "Enrollment Verified"
+         				to stage = "Enrollment Pending Review"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_enrollment as "Resume Enrollment"
+    				{
+         				type = normal
+         				from stage = "Enrollment On Hold"
+         				to stage = "Enrollment In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reverify_enrollment as "Re-Verify Enrollment Details"
+    				{
+         				type = normal
+         				from stage = "Enrollment Reopened"
+         				to stage = "Enrollment Verified"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				start_enrollment as "Start Enrollment Process"
+    				{
+         				type = normal
+         				from stage = "Enrollment Confirmed"
+         				to stage = "Enrollment In Progress"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				submit_for_review as "Submit for Academic Review"
+    				{
+         				type = normal
+         				from stage = "Enrollment Created"
+         				to stage = "Enrollment Pending Review"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				verify_enrollment as "Verify Enrollment Details"
+    				{
+         				type = normal
+         				from stage = "Enrollment Created"
+         				to stage = "Enrollment Verified"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+		}
+
+
+	}
+	share_settings
+	{
+			"Academic Advisor"
+			{
+				name = "Academic Advisor"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Review student academic progress and GPA \n"
+				ModulePermissions
+				{
+					academic_progress
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							academic_progress_by_semester={"View","Edit"}
+							academic_progress_Report={"View","Edit"}
+						}
+					}
+					enrollment_tracking
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							enrollment_tracking_by_semester={"View"}
+							enrollment_tracking_Report={"View"}
+						}
+					}
+					student_profile
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_profile_by_enrollment_status={"View"}
+							student_profile_Report={"View"}
+						}
+					}
+				}
+			}
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Registrar"
+			{
+				name = "Registrar"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Process student enrollment and course registration \n"
+				ModulePermissions
+				{
+					academic_progress
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							academic_progress_by_semester={"View"}
+							academic_progress_Report={"View"}
+						}
+					}
+					enrollment_tracking
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							enrollment_tracking_by_semester={"View","Edit","Delete"}
+							enrollment_tracking_Report={"View","Edit","Delete"}
+						}
+					}
+					student_profile
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_profile_by_enrollment_status={"View"}
+							student_profile_Report={"View"}
+						}
+					}
+					course_registration
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							course_registration_by_semester={"View","Edit","Delete"}
+							course_registration_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Academic Administrator"
+			{
+				name = "Academic Administrator"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Oversee academic calendar planning and scheduling \n"
+				ModulePermissions
+				{
+					academic_progress
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							academic_progress_by_semester={"View"}
+							academic_progress_Report={"View"}
+						}
+					}
+					enrollment_tracking
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							enrollment_tracking_by_semester={"View"}
+							enrollment_tracking_Report={"View"}
+						}
+					}
+					course_catalog
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							course_catalog_by_department={"View","Edit","Delete"}
+							course_catalog_Report={"View","Edit","Delete"}
+						}
+					}
+					academic_calendar
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							academic_calendar_Report={"View","Edit","Delete"}
+							academic_calendar_by_semester={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Instructor"
+			{
+				name = "Instructor"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Record and update attendance for assigned courses \n"
+				ModulePermissions
+				{
+					attendance_record
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							attendance_record_Report={"View","Edit","Delete"}
+							attendance_record_by_status={"View","Edit","Delete"}
+						}
+					}
+					academic_progress
+					{
+						enabled= Viewall,Modifyall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							academic_progress_by_semester={"View","Edit","Delete"}
+							academic_progress_Report={"View","Edit","Delete"}
+						}
+					}
+					student_profile
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_profile_by_enrollment_status={"View"}
+							student_profile_Report={"View"}
+						}
+					}
+				}
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Student"
+			{
+				name = "Student"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Register for courses during open enrollment periods \n"
+				ModulePermissions
+				{
+					attendance_record
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							attendance_record_Report={"View"}
+							attendance_record_by_status={"View"}
+						}
+					}
+					academic_progress
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							academic_progress_by_semester={"View"}
+							academic_progress_Report={"View"}
+						}
+					}
+					enrollment_tracking
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							enrollment_tracking_by_semester={"View"}
+							enrollment_tracking_Report={"View"}
+						}
+					}
+					course_registration
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+					}
+				}
+			}
+			"Parent"
+			{
+				name = "Parent"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "View student enrollment and academic progress reports \n"
+				ModulePermissions
+				{
+					attendance_record
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							attendance_record_Report={"View"}
+							attendance_record_by_status={"View"}
+						}
+					}
+					academic_progress
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							academic_progress_by_semester={"View"}
+							academic_progress_Report={"View"}
+						}
+					}
+					enrollment_tracking
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							enrollment_tracking_by_semester={"View"}
+							enrollment_tracking_Report={"View"}
+						}
+					}
+					student_profile
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							student_profile_by_enrollment_status={"View"}
+							student_profile_Report={"View"}
+						}
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form academic_calendar
+			{
+				label placement = left
+			}
+			form academic_progress
+			{
+				label placement = left
+			}
+			form attendance_record
+			{
+				label placement = left
+			}
+			form course_catalog
+			{
+				label placement = left
+			}
+			form course_registration
+			{
+				label placement = left
+			}
+			form enrollment_tracking
+			{
+				label placement = left
+			}
+			form student_profile
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report course_registration_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student as "Student"
+								course as "Course"
+								registration_date as "Registration Date"
+								status as "Status"
+								semester as "Semester"
+								enrollment_date as "Enrollment Date"
+								priority as "Priority"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								student as "Student"
+								course as "Course"
+								registration_date as "Registration Date"
+								status as "Status"
+								semester as "Semester"
+								enrollment_date as "Enrollment Date"
+								priority as "Priority"
+							)
+						)
+						datablock2
+						(
+		     				title = "Student"
+		     				related field = student
+							fields
+							(
+								student_id as "Student Id"
+								name as "Name"
+								date_of_birth as "Date Of Birth"
+								gender as "Gender"
+								admission_date as "Admission Date"
+								enrollment_status as "Enrollment Status"
+								contact_number as "Contact Number"
+								email as "Email"
+								address as "Address"
+								emergency_contact as "Emergency Contact"
+							)
+						)
+						datablock3
+						(
+		     				title = "Course"
+		     				related field = course
+							fields
+							(
+								course_code as "Course Code"
+								course_name as "Course Name"
+								credit_hours as "Credit Hours"
+								prerequisites as "Prerequisites"
+								instructor as "Instructor"
+								department as "Department"
+								description as "Description"
+								max_capacity as "Max Capacity"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report course_registration_by_semester
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								student as "Student"
+								course as "Course"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student as "Student"
+								course as "Course"
+								registration_date as "Registration Date"
+								status as "Status"
+								semester as "Semester"
+								enrollment_date as "Enrollment Date"
+								priority as "Priority"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report attendance_record_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student as "Student"
+								course as "Course"
+								date_1 as "Date"
+								status as "Status"
+								period as "Period"
+								instructor as "Instructor"
+								notes as "Notes"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								student as "Student"
+								course as "Course"
+								date_1 as "Date"
+								status as "Status"
+								period as "Period"
+								instructor as "Instructor"
+								notes as "Notes"
+							)
+						)
+						datablock2
+						(
+		     				title = "Student"
+		     				related field = student
+							fields
+							(
+								student_id as "Student Id"
+								name as "Name"
+								date_of_birth as "Date Of Birth"
+								gender as "Gender"
+								admission_date as "Admission Date"
+								enrollment_status as "Enrollment Status"
+								contact_number as "Contact Number"
+								email as "Email"
+								address as "Address"
+								emergency_contact as "Emergency Contact"
+							)
+						)
+						datablock3
+						(
+		     				title = "Course"
+		     				related field = course
+							fields
+							(
+								course_code as "Course Code"
+								course_name as "Course Name"
+								credit_hours as "Credit Hours"
+								prerequisites as "Prerequisites"
+								instructor as "Instructor"
+								department as "Department"
+								description as "Description"
+								max_capacity as "Max Capacity"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report attendance_record_by_status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								period as "Period"
+								instructor as "Instructor"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student as "Student"
+								course as "Course"
+								date_1 as "Date"
+								status as "Status"
+								period as "Period"
+								instructor as "Instructor"
+								notes as "Notes"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report academic_progress_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student as "Student"
+								course as "Course"
+								semester as "Semester"
+								grade as "Grade"
+								credits_earned as "Credits Earned"
+								gpa as "GPA"
+								assessment_date as "Assessment Date"
+								feedback as "Feedback"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								student as "Student"
+								course as "Course"
+								semester as "Semester"
+								grade as "Grade"
+								credits_earned as "Credits Earned"
+								gpa as "GPA"
+								assessment_date as "Assessment Date"
+								feedback as "Feedback"
+							)
+						)
+						datablock2
+						(
+		     				title = "Course"
+		     				related field = course
+							fields
+							(
+								course_code as "Course Code"
+								course_name as "Course Name"
+								credit_hours as "Credit Hours"
+								prerequisites as "Prerequisites"
+								instructor as "Instructor"
+								department as "Department"
+								description as "Description"
+								max_capacity as "Max Capacity"
+							)
+						)
+						datablock3
+						(
+		     				title = "Student"
+		     				related field = student
+							fields
+							(
+								student_id as "Student Id"
+								name as "Name"
+								date_of_birth as "Date Of Birth"
+								gender as "Gender"
+								admission_date as "Admission Date"
+								enrollment_status as "Enrollment Status"
+								contact_number as "Contact Number"
+								email as "Email"
+								address as "Address"
+								emergency_contact as "Emergency Contact"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report academic_progress_by_semester
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								student as "Student"
+								course as "Course"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student as "Student"
+								course as "Course"
+								semester as "Semester"
+								grade as "Grade"
+								credits_earned as "Credits Earned"
+								gpa as "GPA"
+								assessment_date as "Assessment Date"
+								feedback as "Feedback"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report academic_calendar_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								academic_year as "Academic Year"
+								start_date as "Start Date"
+								end_date as "End Date"
+								semester as "Semester"
+								break_start as "Break Start"
+								break_end as "Break End"
+								exam_period as "Exam Period"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								academic_year as "Academic Year"
+								start_date as "Start Date"
+								end_date as "End Date"
+								semester as "Semester"
+								break_start as "Break Start"
+								break_end as "Break End"
+								exam_period as "Exam Period"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report academic_calendar_by_semester
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								academic_year as "Academic Year"
+								exam_period as "Exam Period"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								academic_year as "Academic Year"
+								start_date as "Start Date"
+								end_date as "End Date"
+								semester as "Semester"
+								break_start as "Break Start"
+								break_end as "Break End"
+								exam_period as "Exam Period"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report student_profile_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student_id as "Student Id"
+								name as "Name"
+								date_of_birth as "Date Of Birth"
+								gender as "Gender"
+								admission_date as "Admission Date"
+								enrollment_status as "Enrollment Status"
+								contact_number as "Contact Number"
+								email as "Email"
+								address as "Address"
+								emergency_contact as "Emergency Contact"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								student_id as "Student Id"
+								name as "Name"
+								date_of_birth as "Date Of Birth"
+								gender as "Gender"
+								admission_date as "Admission Date"
+								enrollment_status as "Enrollment Status"
+								contact_number as "Contact Number"
+								email as "Email"
+								address as "Address"
+								emergency_contact as "Emergency Contact"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report student_profile_by_enrollment_status
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								name as "Name"
+								emergency_contact as "Emergency Contact"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student_id as "Student Id"
+								name as "Name"
+								date_of_birth as "Date Of Birth"
+								gender as "Gender"
+								admission_date as "Admission Date"
+								enrollment_status as "Enrollment Status"
+								contact_number as "Contact Number"
+								email as "Email"
+								address as "Address"
+								emergency_contact as "Emergency Contact"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report course_catalog_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								course_code as "Course Code"
+								course_name as "Course Name"
+								credit_hours as "Credit Hours"
+								prerequisites as "Prerequisites"
+								instructor as "Instructor"
+								department as "Department"
+								description as "Description"
+								max_capacity as "Max Capacity"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								course_code as "Course Code"
+								course_name as "Course Name"
+								credit_hours as "Credit Hours"
+								prerequisites as "Prerequisites"
+								instructor as "Instructor"
+								department as "Department"
+								description as "Description"
+								max_capacity as "Max Capacity"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report course_catalog_by_department
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								course_code as "Course Code"
+								course_name as "Course Name"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								course_code as "Course Code"
+								course_name as "Course Name"
+								credit_hours as "Credit Hours"
+								prerequisites as "Prerequisites"
+								instructor as "Instructor"
+								department as "Department"
+								description as "Description"
+								max_capacity as "Max Capacity"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report enrollment_tracking_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student as "Student"
+								academic_year as "Academic Year"
+								semester as "Semester"
+								status as "Status"
+								enrollment_date as "Enrollment Date"
+								registration_count as "Registration Count"
+								last_updated as "Last Updated"
+								notes as "Notes"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+		     				title = "Overview"
+							fields
+							(
+								student as "Student"
+								academic_year as "Academic Year"
+								semester as "Semester"
+								status as "Status"
+								enrollment_date as "Enrollment Date"
+								registration_count as "Registration Count"
+								last_updated as "Last Updated"
+								notes as "Notes"
+							)
+						)
+						datablock2
+						(
+		     				title = "Student"
+		     				related field = student
+							fields
+							(
+								student_id as "Student Id"
+								name as "Name"
+								date_of_birth as "Date Of Birth"
+								gender as "Gender"
+								admission_date as "Admission Date"
+								enrollment_status as "Enrollment Status"
+								contact_number as "Contact Number"
+								email as "Email"
+								address as "Address"
+								emergency_contact as "Emergency Contact"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+			report enrollment_tracking_by_semester
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								academic_year as "Academic Year"
+								student as "Student"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+								Add 
+								Import 
+								Export 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								student as "Student"
+								academic_year as "Academic Year"
+								semester as "Semester"
+								status as "Status"
+								enrollment_date as "Enrollment Date"
+								registration_count as "Registration Count"
+								last_updated as "Last Updated"
+								notes as "Notes"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+								Print 
+							)
+						)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Section_1
+				{
+					displayname = "Dashboard"
+					icon = "ui-1-dashboard-half"
+					page DashBoard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+				}
+				section Section_2
+				{
+					displayname = "Course Registration"
+					icon = "design-window-paragraph"
+					form  course_registration
+					{
+						icon = "ui-1-bold-add"
+					}
+					report course_registration_Report
+					{
+						icon = "business-laptop-71"
+					}
+					report course_registration_by_semester
+					{
+						icon = "business-pin"
+					}
+				}
+				section Section_3
+				{
+					displayname = "Attendance Record"
+					icon = "users-2-voice-record"
+					form  attendance_record
+					{
+						icon = "ui-1-bold-add"
+					}
+					report attendance_record_Report
+					{
+						icon = "users-2-voice-record"
+					}
+					report attendance_record_by_status
+					{
+						icon = "business-pin"
+					}
+				}
+				section Section_4
+				{
+					displayname = "Academic Progress"
+					icon = "loader-refresh"
+					form  academic_progress
+					{
+						icon = "ui-1-bold-add"
+					}
+					report academic_progress_Report
+					{
+						icon = "loader-refresh"
+					}
+					report academic_progress_by_semester
+					{
+						icon = "business-pin"
+					}
+				}
+				section Section_5
+				{
+					displayname = "Academic Calendar"
+					icon = "ui-1-calendar-60"
+					form  academic_calendar
+					{
+						icon = "ui-1-bold-add"
+					}
+					report academic_calendar_Report
+					{
+						icon = "business-laptop-71"
+					}
+					report academic_calendar_by_semester
+					{
+						icon = "business-pin"
+					}
+				}
+				section Section_6
+				{
+					displayname = "Student Profile"
+					icon = "education-pencil-47"
+					form  student_profile
+					{
+						icon = "ui-1-bold-add"
+					}
+					report student_profile_Report
+					{
+						icon = "users-2-man"
+					}
+					report student_profile_by_enrollment_status
+					{
+						icon = "business-pin"
+					}
+				}
+				section Section_7
+				{
+					displayname = "Course Catalog"
+					icon = "design-book-open"
+					form  course_catalog
+					{
+						icon = "ui-1-bold-add"
+					}
+					report course_catalog_Report
+					{
+						icon = "business-laptop-71"
+					}
+					report course_catalog_by_department
+					{
+						icon = "business-pin"
+					}
+				}
+				section Section_8
+				{
+					displayname = "Enrollment Tracking"
+					icon = "shopping-delivery-track"
+					form  enrollment_tracking
+					{
+						icon = "ui-1-bold-add"
+					}
+					report enrollment_tracking_Report
+					{
+						icon = "ui-1-database"
+					}
+					report enrollment_tracking_by_semester
+					{
+						icon = "business-pin"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = solid
+					show = {space,section,component}
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "poppins"
+			color options
+			{
+				color = "2"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form academic_calendar
+			{
+				label placement = auto
+			}
+			form academic_progress
+			{
+				label placement = auto
+			}
+			form attendance_record
+			{
+				label placement = auto
+			}
+			form course_catalog
+			{
+				label placement = auto
+			}
+			form course_registration
+			{
+				label placement = auto
+			}
+			form enrollment_tracking
+			{
+				label placement = auto
+			}
+			form student_profile
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = twocolumn
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = chryslerpurple
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form academic_calendar
+			{
+				label placement = auto
+			}
+			form academic_progress
+			{
+				label placement = auto
+			}
+			form attendance_record
+			{
+				label placement = auto
+			}
+			form course_catalog
+			{
+				label placement = auto
+			}
+			form course_registration
+			{
+				label placement = auto
+			}
+			form enrollment_tracking
+			{
+				label placement = auto
+			}
+			form student_profile
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = lightred
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
